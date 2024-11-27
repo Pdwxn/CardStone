@@ -31,7 +31,7 @@ function App() {
         </Navbar>
       </header>
       <body>
-        {/* <h1 className="ml-20 mb-10 text-white text-xl font-bold">{cards.cardSet}</h1> */}
+        <h1 className="ml-20 mb-10 text-white text-2xl font-bold">All Cards</h1>
       <div className="ml-20 mr-20 flex flex-wrap gap-8 justify-center">
         {cards.map((card) => (
           <Cards key={card.cardId} card={card} />

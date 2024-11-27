@@ -14,7 +14,27 @@ export const hearthstoneApi = axios.create({
 
 export const getAllCards = async (): Promise<Card[]> => {
   try {
-    const response = await hearthstoneApi.get("/cards/sets/Classic");
+    const response = await hearthstoneApi.get("/cards/");
+
+    const allCards = response.data;
+    const flattenedCards = Object.values(allCards).flat() as Card[];
+
+    const cardsWithImages = flattenedCards.filter((card) => card.img);
+
+    const limitedCards = cardsWithImages.slice(0, 12);
+
+    console.log("Cartas limitadas:", limitedCards);
+    console.log("Datos de la API (sin procesar):", response.data);
+    return limitedCards;
+  } catch (error) {
+    console.error("Error al obtener las cartas:", error);
+    return [];
+  }
+};
+
+export const getClassicsCards = async (): Promise<Card[]> => {
+  try {
+    const response = await hearthstoneApi.get("cards/sets/Classics");
 
     const allCards = response.data;
     const flattenedCards = Object.values(allCards).flat() as Card[];
