@@ -17,7 +17,7 @@ const SearchBar = ({ query, setQuery }: Props) => {
 
   return (
     <input
-      className="self-center border-2 py-2 px-4 rounded-lg bg-slate-500 text-slate-400"
+      className="self-center border-2 py-2 px-4 rounded-lg bg-slate-500 text-white font-semibold"
       type="text"
       placeholder="Search cards..."
       value={query}
