@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useKey } from '../../../hooks/useKey';
+import { useKey } from '../../../services/hooks/useKey';
 
 interface Props {
   query: string;
@@ -14,8 +14,6 @@ const SearchBar = ({ query, setQuery }: Props) => {
     inputElement.current?.focus();
     setQuery("")
   })
-
-  console.log(inputElement)
 
   return (
     <input

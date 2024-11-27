@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Card } from "../models/card";
 
 const API_BASE_URL = "https://omgvamp-hearthstone-v1.p.rapidapi.com/";
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -11,14 +12,23 @@ export const hearthstoneApi = axios.create({
   },
 });
 
-export const getAllCards = async () => {
+export const getAllCards = async (): Promise<Card[]> => {
   try {
-    const response = await hearthstoneApi.get("/cards");
-    console.log("Datos de la API:", response.data)
-    return response.data;
+    const response = await hearthstoneApi.get("/cards/sets/Classic");
+
+    const allCards = response.data;
+    const flattenedCards = Object.values(allCards).flat() as Card[];
+
+    const cardsWithImages = flattenedCards.filter((card) => card.img);
+
+    const limitedCards = cardsWithImages.slice(0, 28);
+
+    console.log("Cartas limitadas:", limitedCards);
+    console.log("Datos de la API (sin procesar):", response.data);
+    return limitedCards;
   } catch (error) {
     console.error("Error al obtener las cartas:", error);
-    throw error;
+    return [];
   }
 };
 
