@@ -18,6 +18,7 @@ function Navbar({ children }: Props) {
           <div className="text-xl font-semibold flex flex-wrap gap-8 justify-between items-center">
             <h2>All Cards</h2>
             <h2>Card Sets</h2>
+            <h2>All Cardbacks</h2>
             <h2>Classes</h2>
           </div>
           <div className="mr-14">{children}</div>

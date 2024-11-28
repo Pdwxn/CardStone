@@ -3,14 +3,16 @@
   import SearchBar from "./components/Layout/navbar/SearchBar";
   import Footer from "./components/Layout/footer/Footer";
   import CardList from "./components/CardList"; 
+import Homepage from "./pages/Homepage";
 
   function App() {
     const [query, setQuery] = useState<string>("");
     const [loading, setLoading] =useState<boolean>(false)
     
     return (
-      <div>
-        <header>
+      <>
+      <Homepage query={query} setQuery={setQuery} />
+        {/* <header>
           <Navbar>
             <SearchBar query={query} setQuery={setQuery} />
           </Navbar>
@@ -21,8 +23,8 @@
           <CardList loading={loading} setLoading={setLoading} />
         </div>
         </div>
-        <Footer />
-      </div>
+        <Footer /> */}
+      </>
     );
   }
 
