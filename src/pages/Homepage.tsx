@@ -13,7 +13,7 @@ function Homepage({ query, setQuery }: Props) {
   return (
     <>
       <div className="relative w-full h-screen">
-        <header className="absolute top-0 left-0 w-full z-10">
+        <header className="absolute top-0 left-0 w-full z-20">
           <Navbar>
             <SearchBar query={query} setQuery={setQuery} />
           </Navbar>

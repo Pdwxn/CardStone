@@ -1,31 +1,22 @@
-  import { useState } from "react";
-  import Navbar from "./components/Layout/navbar/NavBar";
-  import SearchBar from "./components/Layout/navbar/SearchBar";
-  import Footer from "./components/Layout/footer/Footer";
-  import CardList from "./components/CardList"; 
-import Homepage from "./pages/Homepage";
+import { lazy, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-  function App() {
-    const [query, setQuery] = useState<string>("");
-    const [loading, setLoading] =useState<boolean>(false)
-    
-    return (
-      <>
-      <Homepage query={query} setQuery={setQuery} />
-        {/* <header>
-          <Navbar>
-            <SearchBar query={query} setQuery={setQuery} />
-          </Navbar>
-        </header>
-        <div>
-          <h1 className="ml-20 mb-10 text-white text-2xl font-bold">All Cards</h1>
-        <div className="ml-20 mr-20">
-          <CardList loading={loading} setLoading={setLoading} />
-        </div>
-        </div>
-        <Footer /> */}
-      </>
-    );
-  }
+const Homepage = lazy(() => import("./pages/Homepage"));
 
-  export default App;
+function App() {
+  const [query, setQuery] = useState<string>("");
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Homepage query={query} setQuery={setQuery} />} />
+        <Route path="/all-cards" element={0} />
+        <Route path="/card-sets" element={0} />
+        <Route path="/all-cardbacks" element={0} />
+        <Route path="/classes" element={0} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;

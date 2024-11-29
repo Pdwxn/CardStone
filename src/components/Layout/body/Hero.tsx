@@ -3,7 +3,7 @@ import hero from "../../../assets/ASW4ACCHGE991428977059569.png"
 function Hero() {
   return (
     <>
-        <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white text-center drop-shadow-2xl z-20">
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-white text-center drop-shadow-2xl z-10">
           <h1 className="text-5xl font-bold mb-4">Welcome to Cardstone</h1>
           <h1 className="text-3xl font-semibold mb-2">
             The website when you can learn about the <br />
