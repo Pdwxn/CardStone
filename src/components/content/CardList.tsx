@@ -112,7 +112,7 @@ function CardList({loading, setLoading}: Props) {
 
     {loading ? (
         <div className="flex justify-center items-center h-48">
-          <Spinner className="h-16 w-16 text-emerald-500/70" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
+          <Spinner className="mt-10 mb-10 h-[6rem] w-[6rem] text-emerald-500/70" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
         </div>
       ) : (
         <div className="flex flex-wrap gap-8 justify-center">

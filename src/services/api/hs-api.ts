@@ -32,7 +32,7 @@ export const getPaginatedAllCards = async (
       health: filters.health,
     };
 
-    const response = await hearthstoneApi.get("/cardbacks/", { params });
+    const response = await hearthstoneApi.get("/cards/", { params });
 
     const allCards = response.data;
     const flattenedCards = Object.values(allCards).flat() as Card[];
