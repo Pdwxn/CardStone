@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-import { getPaginatedAllCards } from "../services/api/hs-api";
-import Cards from "./Cards";
-import { Card } from "../models/card";
-import { Filters } from "../models/filters";
+import { getPaginatedAllCards } from "../../services/api/hs-api";
+import Cards from "../Cards";
+import { Card } from "../../models/card";
+import { Filters } from "../../models/filters";
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import { Spinner } from "@material-tailwind/react";
 
 interface Props {
     loading: boolean;
@@ -107,16 +110,9 @@ function CardList({loading, setLoading}: Props) {
 
       {/* <button className="bg-emerald-300 p-6 rounded-2xl shadow-md w-[300px] mx-auto text-indigo-700">cosa cosa</button> */}
 
-      {/* Cartas */}
-      {/* <div className="flex flex-wrap gap-8 justify-center">
-        {cards.map((card) => (
-          <Cards key={card.cardId} card={card} />
-        ))}
-      </div> */}
-
     {loading ? (
         <div className="flex justify-center items-center h-48">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid"></div>
+          <Spinner className="h-16 w-16 text-emerald-500/70" onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
         </div>
       ) : (
         <div className="flex flex-wrap gap-8 justify-center">
@@ -127,13 +123,13 @@ function CardList({loading, setLoading}: Props) {
       )}
 
       {/* Paginación */}
-      <div className="mt-10 font-semibold text-white flex flex-wrap gap-8 justify-center">
-        <button onClick={handlePrevPage} disabled={currentPage === 1} className="mr-3">
-          Previous
+      <div className="mt-10 font-semibold text-white flex flex-wrap gap-8 justify-center items-center">
+        <button onClick={handlePrevPage} disabled={currentPage === 1}>
+          <NavigateBeforeIcon style={{ fontSize: 30}}/>
         </button>
         <span>Page {currentPage}</span>
-        <button onClick={handleNextPage} disabled={cards.length < pageSize} className="ml-3">
-          Next
+        <button onClick={handleNextPage} disabled={cards.length < pageSize}>
+          <NavigateNextIcon style={{ fontSize: 30}} />
         </button>
       </div>
     </div>

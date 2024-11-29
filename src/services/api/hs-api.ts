@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Card } from "../../models/card";
 import { Filters } from "../../models/filters";
+import { CardBacks } from "../../models/cardbacks";
 
 const API_BASE_URL = "https://omgvamp-hearthstone-v1.p.rapidapi.com/";
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -31,7 +32,7 @@ export const getPaginatedAllCards = async (
       health: filters.health,
     };
 
-    const response = await hearthstoneApi.get("/cards/", { params });
+    const response = await hearthstoneApi.get("/cardbacks/", { params });
 
     const allCards = response.data;
     const flattenedCards = Object.values(allCards).flat() as Card[];
@@ -40,6 +41,8 @@ export const getPaginatedAllCards = async (
     const endIndex = startIndex + pageSize;
     const paginatedCards = flattenedCards.slice(startIndex, endIndex);
 
+    console.log(allCards)
+
     return paginatedCards;
   } catch (error) {
     console.error("Error al obtener las cartas:", error);
@@ -47,22 +50,29 @@ export const getPaginatedAllCards = async (
   }
 };
 
-export const getAllCards = async (): Promise<Card[]> => {
+export const getPaginatedCardBacks = async (
+  page: number,
+  pageSize: number,
+): Promise<CardBacks[]> => {
   try {
-    const response = await hearthstoneApi.get("/cards/");
+    const response = await hearthstoneApi.get("/cardbacks/");
 
-    const allCards = response.data;
-    const flattenedCards = Object.values(allCards).flat() as Card[];
+    const allCardBacks = response.data;
+    const flattenedCards = Object.values(allCardBacks).flat() as CardBacks[];
 
-    const cardsWithImages = flattenedCards.filter((card) => card.img);
+    const cardsWithImages = flattenedCards.filter((CardBacks) => CardBacks.img);
+
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const paginatedCards = flattenedCards.slice(startIndex, endIndex);
 
     const limitedCards = cardsWithImages.slice(0, 12);
 
-    console.log("Cartas limitadas:", limitedCards);
+    console.log("Dorso de cartas limitadas:", limitedCards);
     console.log("Datos de la API (sin procesar):", response.data);
-    return limitedCards;
+    return paginatedCards;
   } catch (error) {
-    console.error("Error al obtener las cartas:", error);
+    console.error("Error al obtener el dorso de las cartas:", error);
     return [];
   }
 };
@@ -86,15 +96,3 @@ export const getClassicsCards = async (): Promise<Card[]> => {
     return [];
   }
 };
-
-export const getInfo = async () => {
-  try {
-    const response = await hearthstoneApi.get("/info");
-    console.log("Datos de la API:", response.data)
-    return response.data;
-  } catch (error) {
-    console.error("Error al obtener la info:", error);
-    throw error;
-  }
-};
-

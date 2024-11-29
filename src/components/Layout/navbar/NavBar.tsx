@@ -21,11 +21,11 @@ function Navbar({ children }: Props) {
             <Link to="/all-cards">
               <h2>All Cards</h2>
             </Link>
-            <Link to="/card-sets">
-              <h2>Card Sets</h2>
-            </Link>
             <Link to="/all-cardbacks">
               <h2>All Cardbacks</h2>
+            </Link>
+            <Link to="/card-sets">
+              <h2>Card Sets</h2>
             </Link>
             <Link to="/classes">
               <h2>Classes</h2>
