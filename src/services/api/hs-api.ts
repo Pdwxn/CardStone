@@ -3,7 +3,6 @@ import { Card } from "../../models/card";
 import { Filters } from "../../models/filters";
 import { CardBacks } from "../../models/cardbacks";
 
-
 const API_BASE_URL = "https://omgvamp-hearthstone-v1.p.rapidapi.com/";
 const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -38,15 +37,18 @@ export const getPaginatedAllCards = async (
     const allCards = response.data;
     const flattenedCards = Object.values(allCards).flat() as Card[];
 
+    const cardsWithImages = flattenedCards.filter((Card) => Card.img);
+
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
-    const paginatedCards = flattenedCards.slice(startIndex, endIndex);
+    const paginatedCards = cardsWithImages.slice(startIndex, endIndex);
 
-    console.log(allCards)
+    console.log("Cartas con imagenes limitadas:", paginatedCards);
+    console.log("Datos de la API (sin procesar):", response.data);
 
     return paginatedCards;
   } catch (error) {
-    console.error("Error al obtener las cartas:", error);
+    console.error("Error al obtener el dorso de las cartas:", error);
     return [];
   }
 };
@@ -65,12 +67,11 @@ export const getPaginatedCardBacks = async (
 
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
-    const paginatedCards = flattenedCards.slice(startIndex, endIndex);
+    const paginatedCards = cardsWithImages.slice(startIndex, endIndex);
 
-    const limitedCards = cardsWithImages.slice(0, 12);
-
-    console.log("Dorso de cartas limitadas:", limitedCards);
+    console.log("Cartas con imagenes limitadas:", paginatedCards);
     console.log("Datos de la API (sin procesar):", response.data);
+
     return paginatedCards;
   } catch (error) {
     console.error("Error al obtener el dorso de las cartas:", error);
