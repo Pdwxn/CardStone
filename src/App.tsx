@@ -1,11 +1,11 @@
 import { lazy, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CardBacksPage from "./pages/CardBacksPage";
-import CardSetsPage from "./pages/CardSetsPage";
-import ClassesPage from "./pages/ClassesPage";
 
 const Homepage = lazy(() => import("./pages/Homepage"));
 const AllCardsPage = lazy(() => import("./pages/AllCardsPage"))
+const CardBacksPage = lazy(() => import("./pages/CardBacksPage"))
+const CardSetsPage = lazy(() => import("./pages/CardSetsPage"))
+const ClassesPage = lazy(() => import("./pages/ClassesPage"))
 
 function App() {
   const [query, setQuery] = useState<string>("");
