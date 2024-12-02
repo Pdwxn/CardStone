@@ -40,7 +40,7 @@ function CardBackList({ loading, setLoading }: Props) {
       {loading ? (
         <div className="flex justify-center items-center h-48">
           <Spinner
-            className="mt-10 mb-10 h-[6rem] w-[6rem] text-emerald-500/70"
+            className="mt-10 mb-10 h-[6rem] w-[6rem] text-emerald-500/70 animate-spin"
             onPointerEnterCapture={undefined}
             onPointerLeaveCapture={undefined}
           />

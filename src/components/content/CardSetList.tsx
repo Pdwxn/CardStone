@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { getPaginatedAllCards } from "../../services/api/hs-api";
-import Cards from "../Cards";
 import { Card } from "../../models/card";
 import { Filters } from "../../models/filters";
+import { getPaginatedCardBySets } from "../../services/api/hs-api";
+import Cards from "../Cards";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import { Spinner } from "@material-tailwind/react";
@@ -10,9 +10,10 @@ import { Spinner } from "@material-tailwind/react";
 interface Props {
   loading: boolean;
   setLoading: (loading: boolean) => void;
+  setName: string;
 }
 
-function CardList({ loading, setLoading }: Props) {
+function CardSetList({ loading, setLoading, setName }: Props) {
   const [cards, setCards] = useState<Card[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 16;
@@ -25,6 +26,7 @@ function CardList({ loading, setLoading }: Props) {
   });
 
   useEffect(() => {
+    if (!setName) return;
     const fetchCards = async () => {
       setLoading(true);
       try {
@@ -36,10 +38,11 @@ function CardList({ loading, setLoading }: Props) {
           locale: filters.locale || "enUS",
         };
 
-        const fetchedCards = await getPaginatedAllCards(
+        const fetchedCards = await getPaginatedCardBySets(
           currentPage,
           pageSize,
-          cleanedFilters
+          cleanedFilters,
+          setName
         );
         setCards(fetchedCards);
       } catch (error) {
@@ -50,7 +53,7 @@ function CardList({ loading, setLoading }: Props) {
     };
 
     fetchCards();
-  }, [filters, currentPage, pageSize, setLoading]);
+  }, [filters, currentPage, pageSize, setLoading, setName]);
 
   const handleNextPage = () => setCurrentPage((prev) => prev + 1);
   const handlePrevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
@@ -140,4 +143,4 @@ function CardList({ loading, setLoading }: Props) {
   );
 }
 
-export default CardList;
+export default CardSetList;
