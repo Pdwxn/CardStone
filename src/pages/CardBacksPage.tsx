@@ -4,20 +4,21 @@ import SearchBar from "../components/Layout/navbar/SearchBar";
 import Footer from "../components/Layout/footer/Footer";
 import CardBackList from "../components/content/CardBackList";
 
-
 interface Props {
     query: string;
     setQuery: (query: string) => void;
+    suggestions: string[];
+    setSuggestions: (suggestions: string[]) => void;
 }
 
-function CardBacksPage({ query, setQuery }: Props) {
+function CardBacksPage({ query, setQuery, suggestions }: Props) {
     const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <>
     <div>
         <Navbar>
-            <SearchBar query={query} setQuery={setQuery} />
+            <SearchBar query={query} setQuery={setQuery} suggestions={suggestions} />
         </Navbar>
     </div>
     <div className="ml-14 mr-14">

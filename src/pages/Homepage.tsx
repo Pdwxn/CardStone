@@ -7,15 +7,17 @@ import Hero from "../components/Layout/body/Hero";
 interface Props {
   query: string;
   setQuery: (query: string) => void;
+  suggestions: string[];
+  setSuggestions: (suggestions: string[]) => void;
 }
 
-function Homepage({ query, setQuery }: Props) {
+function Homepage({ query, setQuery, suggestions }: Props) {
   return (
     <>
       <div className="relative w-full h-screen">
         <header className="absolute top-0 left-0 w-full z-20">
           <Navbar>
-            <SearchBar query={query} setQuery={setQuery} />
+            <SearchBar query={query} setQuery={setQuery} suggestions={suggestions} />
           </Navbar>
         </header>
         <Hero />

@@ -6,13 +6,14 @@ import CardClassesList from "../components/content/CardClassesList";
 import Selector from "../components/Selector";
 import classes from "../components/options/classes";
 
-
 interface Props {
   query: string;
   setQuery: (query: string) => void;
+  suggestions: string[];
+  setSuggestions: (suggestions: string[]) => void;
 }
 
-function ClassesPage({ query, setQuery }: Props) {
+function ClassesPage({ query, setQuery, suggestions }: Props) {
   const [loading, setLoading] = useState<boolean>(false);
   const [cardClassName, setCardClassName] = useState<string>("");
   
@@ -20,7 +21,7 @@ function ClassesPage({ query, setQuery }: Props) {
     <>
       <nav>
         <Navbar>
-          <SearchBar query={query} setQuery={setQuery} />
+          <SearchBar query={query} setQuery={setQuery} suggestions={suggestions} />
         </Navbar>
       </nav>
       <div className="ml-14 mr-14">

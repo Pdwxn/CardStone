@@ -7,16 +7,18 @@ import Footer from "../components/Layout/footer/Footer";
 interface Props {
   query: string;
   setQuery: (query: string) => void;
+  suggestions: string[];
+  setSuggestions: (suggestions: string[]) => void;
 }
 
-function AllCardsPage({ query, setQuery }: Props) {
+function AllCardsPage({ query, setQuery, suggestions }: Props) {
   const [loading, setLoading] = useState<boolean>(false);
 
   return (
     <>
       <nav>
         <Navbar>
-          <SearchBar query={query} setQuery={setQuery} />
+          <SearchBar query={query} setQuery={setQuery} suggestions={suggestions} />
         </Navbar>
       </nav>
       <div className="ml-14 mr-14">
