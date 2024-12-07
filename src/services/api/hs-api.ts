@@ -9,14 +9,28 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 export const hearthstoneApi = axios.create({
   baseURL: API_BASE_URL,
   params: {
-    collectible: '1',
-    locale: 'enUS'
+    collectible: "1",
+    locale: "enUS",
   },
   headers: {
-    'x-rapidapi-key': `${API_KEY}`, 
-    'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com'
+    "x-rapidapi-key": `${API_KEY}`,
+    "x-rapidapi-host": "omgvamp-hearthstone-v1.p.rapidapi.com",
   },
 });
+
+export const getSearchSuggestions = async (
+  query: string
+): Promise<string[]> => {
+  if (query.length <= 2) return [];
+  try {
+    const response = await hearthstoneApi.get(`cards/search/${query}`);
+    const filterdCards = response.data.slice(0, 3);
+    return filterdCards.map((card: Card) => card.name);
+  } catch (error) {
+    console.error("Error al obtener las sugerencias:", error);
+    return [];
+  }
+};
 
 export const getPaginatedAllCards = async (
   page: number,
@@ -55,7 +69,7 @@ export const getPaginatedAllCards = async (
 
 export const getPaginatedCardBacks = async (
   page: number,
-  pageSize: number,
+  pageSize: number
 ): Promise<CardBacks[]> => {
   try {
     const response = await hearthstoneApi.get("/cardbacks/");
@@ -83,7 +97,7 @@ export const getPaginatedCardBySets = async (
   page: number,
   pageSize: number,
   filters: Filters,
-  cardSetName: string,
+  cardSetName: string
 ): Promise<Card[]> => {
   try {
     const params: Record<string, string | number | undefined> = {
@@ -94,7 +108,9 @@ export const getPaginatedCardBySets = async (
       health: filters.health,
     };
 
-    const response = await hearthstoneApi.get(`cards/sets/${cardSetName}`, { params });
+    const response = await hearthstoneApi.get(`cards/sets/${cardSetName}`, {
+      params,
+    });
 
     const cardBySets = response.data;
     const flattenedCards = Object.values(cardBySets).flat() as Card[];
@@ -120,7 +136,7 @@ export const getPaginatedCardByClasses = async (
   page: number,
   pageSize: number,
   filters: Filters,
-  className: string,
+  className: string
 ): Promise<Card[]> => {
   try {
     const params: Record<string, string | number | undefined> = {
@@ -131,7 +147,9 @@ export const getPaginatedCardByClasses = async (
       health: filters.health,
     };
 
-    const response = await hearthstoneApi.get(`cards/classes/${className}`, { params });
+    const response = await hearthstoneApi.get(`cards/classes/${className}`, {
+      params,
+    });
 
     const cardByClasses = response.data;
     const flattenedCards = Object.values(cardByClasses).flat() as Card[];
