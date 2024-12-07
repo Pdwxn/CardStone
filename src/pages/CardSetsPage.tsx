@@ -9,9 +9,11 @@ import cardSets from "../components/options/cardSet";
 interface Props {
   query: string;
   setQuery: (query: string) => void;
+  suggestions: string[];
+  setSuggestions: (suggestions: string[]) => void;
 }
 
-function CardSetsPage({ query, setQuery }: Props) {
+function CardSetsPage({ query, setQuery, suggestions }: Props) {
   const [loading, setLoading] = useState<boolean>(false);
   const [cardSetName, setCardSetName] = useState<string>("");
 
@@ -19,7 +21,7 @@ function CardSetsPage({ query, setQuery }: Props) {
     <>
       <nav>
         <Navbar>
-          <SearchBar query={query} setQuery={setQuery} />
+          <SearchBar query={query} setQuery={setQuery} suggestions={suggestions} />
         </Navbar>
       </nav>
       <div className="ml-14 mr-14">
