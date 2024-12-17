@@ -21,7 +21,7 @@ function AllCardsPage({ query, setQuery, suggestions }: Props) {
           <SearchBar query={query} setQuery={setQuery} suggestions={suggestions} />
         </Navbar>
       </nav>
-      <div className="ml-14 mr-14">
+      <div className="ml-[6rem] mr-[6rem]">
         <h1 className="mb-8 text-4xl text-slate-50 font-semibold">All Cards</h1>
         <CardList loading={loading} setLoading={setLoading} />
       </div>

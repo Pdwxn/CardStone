@@ -21,7 +21,7 @@ function CardBacksPage({ query, setQuery, suggestions }: Props) {
             <SearchBar query={query} setQuery={setQuery} suggestions={suggestions} />
         </Navbar>
     </div>
-    <div className="ml-14 mr-14">
+    <div className="ml-[6rem] mr-[6rem]">
         <h1 className="mb-12 text-4xl text-slate-50 font-semibold">All Cardbacks</h1>
         <CardBackList loading={loading} setLoading={setLoading} />
     </div>
