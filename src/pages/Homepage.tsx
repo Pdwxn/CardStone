@@ -1,24 +1,14 @@
 import Footer from "../components/Layout/footer/Footer";
 import Navbar from "../components/Layout/navbar/NavBar";
-import SearchBar from "../components/Layout/navbar/SearchBar";
 import screenshot from "../assets/screenshot-hearthstoneapi.png";
 import Hero from "../components/Layout/body/Hero";
 
-interface Props {
-  query: string;
-  setQuery: (query: string) => void;
-  suggestions: string[];
-  setSuggestions: (suggestions: string[]) => void;
-}
-
-function Homepage({ query, setQuery, suggestions }: Props) {
+function Homepage() {
   return (
     <>
       <div className="relative w-full h-screen">
         <header className="absolute top-0 left-0 w-full z-20">
-          <Navbar>
-            <SearchBar query={query} setQuery={setQuery} suggestions={suggestions} />
-          </Navbar>
+          <Navbar />
         </header>
         <Hero />
       </div>

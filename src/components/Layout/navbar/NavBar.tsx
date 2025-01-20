@@ -1,12 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from "react-router-dom";
 import logo from "../../../assets/Heartstone webapp logo.png";
 
-interface Props {
-  children: any;
-}
 
-function Navbar({ children }: Props) {
+function Navbar() {
   return (
     <>
       <nav className="ml-14 mr-14 mt-8 mb-8 p-5 rounded-xl text-slate-800 bg-slate-100 flex flex-wrap gap-8 justify-between items-center">
@@ -31,7 +27,6 @@ function Navbar({ children }: Props) {
               <h2>Classes</h2>
             </Link>
           </div>
-          <div className="mr-14">{children}</div>
         </div>
       </nav>
     </>

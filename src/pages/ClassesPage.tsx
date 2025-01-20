@@ -1,28 +1,18 @@
 import { useState } from "react";
 import Navbar from "../components/Layout/navbar/NavBar";
-import SearchBar from "../components/Layout/navbar/SearchBar";
 import Footer from "../components/Layout/footer/Footer";
 import CardClassesList from "../components/content/CardClassesList";
 import Selector from "../components/Selector";
 import classes from "../components/options/classes";
 
-interface Props {
-  query: string;
-  setQuery: (query: string) => void;
-  suggestions: string[];
-  setSuggestions: (suggestions: string[]) => void;
-}
-
-function ClassesPage({ query, setQuery, suggestions }: Props) {
+function ClassesPage() {
   const [loading, setLoading] = useState<boolean>(false);
   const [cardClassName, setCardClassName] = useState<string>("");
   
   return (
     <>
       <nav>
-        <Navbar>
-          <SearchBar query={query} setQuery={setQuery} suggestions={suggestions} />
-        </Navbar>
+        <Navbar />
       </nav>
       <div className="ml-[6rem] mr-[6rem]">
       <div className="flex flex-wrap object-center gap-15 justify-between items-center">

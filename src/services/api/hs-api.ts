@@ -57,9 +57,6 @@ export const getPaginatedAllCards = async (
     const endIndex = startIndex + pageSize;
     const paginatedCards = cardsWithImages.slice(startIndex, endIndex);
 
-    console.log("Cartas con imagenes limitadas:", paginatedCards);
-    console.log("Datos de la API (sin procesar):", response.data);
-
     return paginatedCards;
   } catch (error) {
     console.error("Error al obtener el dorso de las cartas:", error);
@@ -82,9 +79,6 @@ export const getPaginatedCardBacks = async (
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const paginatedCards = cardsWithImages.slice(startIndex, endIndex);
-
-    console.log("Cartas con imagenes limitadas:", paginatedCards);
-    console.log("Datos de la API (sin procesar):", response.data);
 
     return paginatedCards;
   } catch (error) {
@@ -115,16 +109,10 @@ export const getPaginatedCardBySets = async (
     const cardBySets = response.data;
     const flattenedCards = Object.values(cardBySets).flat() as Card[];
 
-    const cardsWithImages = flattenedCards.filter((Card) => Card.img);
-
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const paginatedCards = flattenedCards.slice(startIndex, endIndex);
 
-    const limitedCards = cardsWithImages.slice(0, 12);
-
-    console.log("Dorso de cartas limitadas:", limitedCards);
-    console.log("Datos de la API (sin procesar):", response.data);
     return paginatedCards;
   } catch (error) {
     console.error("Error al obtener el dorso de las cartas:", error);
@@ -159,9 +147,6 @@ export const getPaginatedCardByClasses = async (
     const startIndex = (page - 1) * pageSize;
     const endIndex = startIndex + pageSize;
     const paginatedCards = cardsWithImages.slice(startIndex, endIndex);
-
-    console.log("Cartas con imagenes limitadas:", paginatedCards);
-    console.log("Datos de la API (sin procesar):", response.data);
 
     return paginatedCards;
   } catch (error) {
