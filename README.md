@@ -1,51 +1,36 @@
-# React + TypeScript + Vite
+# CardStone 🃏⚡
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application built with React and Vite that provides a comprehensive database and browser for Hearthstone cards using the official Hearthstone API. Explore, search, and discover all the cards from Blizzard's popular digital card game.
 
-Currently, two official plugins are available:
+#🚀 Features
+- Complete Card Database: Browse through all Hearthstone cards with detailed information
+- Advanced Search & Filtering: Find cards by name, mana cost, class, rarity, and card type
+- High-Quality Card Images: View full-resolution card artwork and renders
+- Set Collections: Explore cards organized by expansions and adventures
+- Card Details: View comprehensive card information including stats, abilities, and flavor text
+- Responsive Design: Optimized for desktop, tablet, and mobile devices
+- Fast Performance: Lightning-fast loading with Vite's optimized build system
+- Real-time Data: Always up-to-date card information directly from Blizzard's API
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#🎯 Usage
+##Browsing Cards
 
-## Expanding the ESLint configuration
+1. Explore All Cards: Browse through the complete card collection
+2. Filter by Class: View cards specific to Warrior, Mage, Paladin, etc.
+3. Search by Name: Use the search bar to find specific cards
+4. Filter by Properties: Filter by mana cost, attack, health, rarity
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+##Card Information
 
-- Configure the top-level `parserOptions` property like this:
+- Basic Stats: Mana cost, attack, health values
+- Card Text: Abilities, effects, and mechanics
+- Flavor Text: Lore and background information
+- Artist Credits: Original artwork attribution
+- Set Information: Expansion or adventure origin
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+##Advanced Features
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# CardStone
+- Set Collections: Browse cards by expansion packs
+- Card Comparison: Compare multiple cards side by side
+- Favorites: Save your favorite cards for quick access
+- Card History: View cards from different game versions
