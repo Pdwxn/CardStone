@@ -2,7 +2,7 @@
 
 A modern web application built with React and Vite that provides a comprehensive database and browser for Hearthstone cards using the official Hearthstone API. Explore, search, and discover all the cards from Blizzard's popular digital card game.
 
-🚀 Features
+## 🚀 Features
 - Complete Card Database: Browse through all Hearthstone cards with detailed information
 - Advanced Search & Filtering: Find cards by name, mana cost, class, rarity, and card type
 - High-Quality Card Images: View full-resolution card artwork and renders
@@ -12,7 +12,7 @@ A modern web application built with React and Vite that provides a comprehensive
 - Fast Performance: Lightning-fast loading with Vite's optimized build system
 - Real-time Data: Always up-to-date card information directly from Blizzard's API
 
-🎯 Usage
+## 🎯 Usage
 
 Browsing Cards
 
