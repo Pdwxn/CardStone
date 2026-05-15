@@ -11,21 +11,21 @@ function CardBack({ CardBacks }: CardBackProps) {
   );
 
   return (
-    <div className="bg-emerald-300 p-6 rounded-2xl shadow-md w-[300px] mx-auto text-indigo-700">
-      <h2 className="text-xl font-bold mb-2">
+    <div className="w-full max-w-[20rem] rounded-[1.75rem] border border-amber-200/20 bg-slate-950/75 p-4 text-slate-100 shadow-2xl shadow-black/30 backdrop-blur">
+      <h2 className="mb-4 text-2xl font-black leading-tight text-white">
         {CardBacks.name || "Unknown Card"}
       </h2>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex justify-center rounded-3xl bg-gradient-to-b from-slate-800/80 to-slate-950/80 p-3 ring-1 ring-white/10">
         <img
           src={
             CardBacks.img || "https://via.placeholder.com/200x300?text=No+Image"
           }
           alt={CardBacks.name}
-          className="w-[230px] h-auto"
+          className="h-auto w-[230px] drop-shadow-2xl"
         />
       </div>
       <h3
-        className="mt-4 font-semibold text-gray-700"
+        className="mt-4 text-sm font-semibold leading-6 text-slate-300"
         dangerouslySetInnerHTML={{
           __html: sanitizedDescription,
         }}

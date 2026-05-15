@@ -1,17 +1,22 @@
 function Footer() {
   return (
-    <div className="ml-14 p-8">
-      <h2 className="text-xl text-teal-400 font-bold mb-2">HearthstoneJSON</h2>
-      <h4 className="font-semibold text-slate-300 mt-4">
-        This website uses HearthstoneJSON for card data and images.
-      </h4>
-      <a href="https://hearthstonejson.com" target="_blank">
-        <h4 className="font-semibold text-teal-400 mt-4">hearthstonejson.com</h4>
-      </a>
-      <h4 className="font-semibold text-slate-300 mt-4">
-        Card backs are currently unavailable because HearthstoneJSON does not expose a card back API.
-      </h4>
-    </div>
+    <footer className="mx-auto mt-20 w-[min(92rem,calc(100%-2rem))] border-t border-white/10 py-8">
+      <div className="flex flex-col gap-4 text-sm text-slate-300 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 className="text-xl font-black text-amber-200">CardStone</h2>
+          <p className="mt-2 max-w-2xl">
+            Built with HearthstoneJSON card data and rendered card images.
+          </p>
+        </div>
+        <a
+          href="https://hearthstonejson.com"
+          target="_blank"
+          className="font-bold text-teal-200 transition hover:text-teal-100"
+        >
+          hearthstonejson.com
+        </a>
+      </div>
+    </footer>
   );
 }
 

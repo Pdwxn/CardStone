@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Footer from "../components/Layout/footer/Footer";
 import Navbar from "../components/Layout/navbar/NavBar";
 import Hero from "../components/Layout/body/Hero";
@@ -5,31 +6,35 @@ import Hero from "../components/Layout/body/Hero";
 function Homepage() {
   return (
     <>
-      <div className="relative w-full h-screen">
-        <header className="absolute top-0 left-0 w-full z-20">
+      <div className="relative min-h-screen overflow-hidden">
+        <header className="absolute left-0 top-0 z-20 w-full">
           <Navbar />
         </header>
         <Hero />
       </div>
 
-      <div className="bg-slate-100 mt-10 mb-2 mx-20 p-10 rounded-3xl flex flex-wrap justify-between items-center">
-        <div>
-          <h1 className="text-3xl font-semibold">Information</h1>
-          <p className="text-lg mt-5">
-            This whole project has been created making use <br />
-            of {<span className="text-indigo-500">HearthstoneJSON</span>} as the card data source.
-          </p>
-          <p className="text-lg mt-5">
-            Card images are loaded from the HearthstoneJSON art service,
-            without requiring an API key.
-          </p>
-          <a href="https://hearthstonejson.com" target="_blank">
-            <button className="mt-8 bg-slate-800 text-white font-semibold p-4 rounded-lg">
-              Visit the project
-            </button>
-          </a>
-        </div>
-      </div>
+      <main className="mx-auto mt-14 w-[min(92rem,calc(100%-2rem))]">
+        <section className="flex flex-col gap-6 border-l-4 border-amber-300/70 pl-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.3em] text-amber-300/80">
+              Simple, fast, no API key
+            </p>
+            <h2 className="mt-3 max-w-4xl text-3xl font-black text-white md:text-5xl">
+              Card data from HearthstoneJSON. Renders from its art service.
+            </h2>
+            <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-300">
+              Browse collectible cards, filter by core stats, or jump directly
+              into a class or expansion without extra visual clutter.
+            </p>
+          </div>
+          <Link
+            to="/card-sets"
+            className="w-fit rounded-full bg-amber-300 px-5 py-3 font-black text-slate-950 transition hover:bg-amber-200"
+          >
+            Browse Sets
+          </Link>
+        </section>
+      </main>
 
       <Footer />
     </>

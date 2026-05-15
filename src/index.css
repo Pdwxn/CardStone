@@ -3,5 +3,15 @@
 @tailwind utilities;
 
 body {
-    background-color: #1e293b;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(245, 158, 11, 0.16), transparent 32rem),
+    radial-gradient(circle at top right, rgba(20, 184, 166, 0.12), transparent 28rem),
+    linear-gradient(135deg, #0f172a 0%, #111827 48%, #1e1b4b 100%);
+  color: #f8fafc;
+}
+
+::selection {
+  background-color: rgba(245, 158, 11, 0.45);
+  color: #fff7ed;
 }
