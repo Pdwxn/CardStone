@@ -47,21 +47,30 @@ function CardBackList({ loading, setLoading }: Props) {
         </div>
       ) : (
         <div className="flex flex-wrap gap-8 justify-center">
-          {cardbacks.map((cardbacks) => (
-            <CardBack key={cardbacks.cardBackId} CardBacks={cardbacks} />
-          ))}
+          {cardbacks.length === 0 ? (
+            <p className="text-slate-50 font-semibold text-center">
+              Card backs are currently unavailable because HearthstoneJSON does
+              not expose a card back API.
+            </p>
+          ) : (
+            cardbacks.map((cardbacks) => (
+              <CardBack key={cardbacks.cardBackId} CardBacks={cardbacks} />
+            ))
+          )}
         </div>
       )}
 
-      <div className="mt-10 font-semibold text-white flex flex-wrap gap-8 justify-center items-center">
-        <button onClick={handlePrevPage} disabled={currentPage === 1}>
-          <NavigateBeforeIcon style={{ fontSize: 30 }} />
-        </button>
-        <span>Page {currentPage}</span>
-        <button onClick={handleNextPage} disabled={cardbacks.length < pageSize}>
-          <NavigateNextIcon style={{ fontSize: 30 }} />
-        </button>
-      </div>
+      {cardbacks.length > 0 && (
+        <div className="mt-10 font-semibold text-white flex flex-wrap gap-8 justify-center items-center">
+          <button onClick={handlePrevPage} disabled={currentPage === 1}>
+            <NavigateBeforeIcon style={{ fontSize: 30 }} />
+          </button>
+          <span>Page {currentPage}</span>
+          <button onClick={handleNextPage} disabled={cardbacks.length < pageSize}>
+            <NavigateNextIcon style={{ fontSize: 30 }} />
+          </button>
+        </div>
+      )}
     </>
   );
 }

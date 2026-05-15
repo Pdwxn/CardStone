@@ -56,6 +56,7 @@ function CardList({ loading, setLoading }: Props) {
   const handlePrevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
 
   const updateFilters = (key: keyof Filters, value: number | undefined) => {
+    setCurrentPage(1);
     setFilters((prevFilters) => ({
       ...prevFilters,
       [key]: value,
@@ -120,9 +121,11 @@ function CardList({ loading, setLoading }: Props) {
         </div>
       ) : (
         <div className="flex flex-wrap gap-8 justify-center">
-          {cards.map((card) => (
-            <Cards key={card.cardId} card={card} />
-          ))}
+          {cards.length === 0 ? (
+            <p className="text-slate-50 font-semibold">No cards found.</p>
+          ) : (
+            cards.map((card) => <Cards key={card.cardId || card.id} card={card} />)
+          )}
         </div>
       )}
 

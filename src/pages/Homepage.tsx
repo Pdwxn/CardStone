@@ -1,6 +1,5 @@
 import Footer from "../components/Layout/footer/Footer";
 import Navbar from "../components/Layout/navbar/NavBar";
-import screenshot from "../assets/screenshot-hearthstoneapi.png";
 import Hero from "../components/Layout/body/Hero";
 
 function Homepage() {
@@ -18,27 +17,18 @@ function Homepage() {
           <h1 className="text-3xl font-semibold">Information</h1>
           <p className="text-lg mt-5">
             This whole project has been created making use <br />
-            of the {<span className="text-indigo-500">HearthstoneAPI</span>}, created by omgvamp <br />
-            which can be found at RapidAPI.
+            of {<span className="text-indigo-500">HearthstoneJSON</span>} as the card data source.
           </p>
           <p className="text-lg mt-5">
-            Please take a look at their official website where <br />
-            you can learn even more about this unofficial project.
+            Card images are loaded from the HearthstoneJSON art service,
+            without requiring an API key.
           </p>
-          <a href="https://hearthstoneapi.com" target="_blank">
+          <a href="https://hearthstonejson.com" target="_blank">
             <button className="mt-8 bg-slate-800 text-white font-semibold p-4 rounded-lg">
               Visit the project
             </button>
           </a>
         </div>
-        <img
-          src={screenshot}
-          alt="hearthstoneapi.com"
-          className="absolute right-[0.84rem] w-auto h-[18rem] rounded-lg"
-          style={{
-            clipPath: "polygon(0 0, 89% 0, 89% 100%, 0 100%)",
-          }}
-        />
       </div>
 
       <Footer />

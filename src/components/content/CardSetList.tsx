@@ -26,6 +26,10 @@ function CardSetList({ loading, setLoading, setName }: Props) {
   });
 
   useEffect(() => {
+    setCurrentPage(1);
+  }, [setName]);
+
+  useEffect(() => {
     if (!setName) return;
     const fetchCards = async () => {
       setLoading(true);
@@ -59,6 +63,7 @@ function CardSetList({ loading, setLoading, setName }: Props) {
   const handlePrevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
 
   const updateFilters = (key: keyof Filters, value: number | undefined) => {
+    setCurrentPage(1);
     setFilters((prevFilters) => ({
       ...prevFilters,
       [key]: value,
@@ -123,9 +128,11 @@ function CardSetList({ loading, setLoading, setName }: Props) {
         </div>
       ) : (
         <div className="flex flex-wrap gap-8 justify-center">
-          {cards.map((card) => (
-            <Cards key={card.cardId} card={card} />
-          ))}
+          {cards.length === 0 ? (
+            <p className="text-slate-50 font-semibold">No cards found for this set.</p>
+          ) : (
+            cards.map((card) => <Cards key={card.cardId || card.id} card={card} />)
+          )}
         </div>
       )}
 

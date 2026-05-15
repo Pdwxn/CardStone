@@ -23,7 +23,9 @@ function ClassesPage() {
             <label className="text-lg text-slate-50">Select a Class: </label>
             <Selector
             selectedSet={cardClassName}
-            onSetChange={setCardClassName}
+            onSetChange={(cardClass) => {
+              setCardClassName(cardClass);
+            }}
             options={classes}
           />
           </div>
